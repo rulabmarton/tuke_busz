@@ -1,0 +1,6 @@
+stop_id,stop_name,stop_desc,stop_lat,stop_lon,location_type,parent_station
+A1,Alfa,1-es kocsiállás,46.0,18.0,0,
+A2,Alfa,2-es kocsiállás,46.0,18.0,0,
+B,Béta,,46.1,18.1,0,
+C,Céza,,46.2,18.2,0,
+D,Delta,,46.3,18.3,0,

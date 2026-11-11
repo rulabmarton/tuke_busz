@@ -1,0 +1,67 @@
+get_journeys:
+  fields:
+    origin:
+      required: true
+      example: "Főpályaudvar"
+      selector:
+        text:
+    destination:
+      example: "Kertváros"
+      selector:
+        text:
+    count:
+      default: 5
+      selector:
+        number:
+          min: 1
+          max: 100
+          mode: box
+    datetime:
+      selector:
+        datetime:
+    lines:
+      example: "3, 30Y"
+      selector:
+        text:
+
+get_timetable:
+  fields:
+    mode:
+      default: stop
+      selector:
+        select:
+          options:
+            - stop
+            - line
+          translation_key: mode
+    stop:
+      example: "Főpályaudvar"
+      selector:
+        text:
+    line:
+      example: "15"
+      selector:
+        text:
+    date:
+      selector:
+        date:
+    start:
+      example: "16:00"
+      selector:
+        time:
+    end:
+      example: "18:00"
+      selector:
+        time:
+    direction:
+      example: "István-akna"
+      selector:
+        text:
+    lines:
+      example: "3, 30Y"
+      selector:
+        text:
+
+get_metadata:
+
+refresh_feed:

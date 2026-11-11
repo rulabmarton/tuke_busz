@@ -1,0 +1,92 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tüke Busz – route",
+        "description": "Choose the departure stop and (optionally) the destination stop. Picking a stop name covers all its platforms; pick a \"Name – platform\" entry to use a single platform.",
+        "data": {
+          "origin": "From (departure stop)",
+          "destination": "To (destination stop, optional)"
+        }
+      },
+      "settings": {
+        "title": "{route}",
+        "data": {
+          "count": "Number of departures to show",
+          "scan_interval": "Update interval",
+          "lines": "Only these lines (comma separated, optional)",
+          "gtfs_refresh_hours": "Download new timetable every"
+        }
+      }
+    },
+    "error": {
+      "same_stop": "Destination must be different from the departure stop."
+    },
+    "abort": {
+      "already_configured": "This route is already configured.",
+      "cannot_connect": "Could not download the Tüke Busz GTFS timetable."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "count": "Number of departures to show",
+          "scan_interval": "Update interval",
+          "lines": "Only these lines (comma separated, optional)",
+          "gtfs_refresh_hours": "Download new timetable every"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "feed": {
+        "name": "Timetable downloaded"
+      }
+    }
+  },
+  "selector": {
+    "mode": {
+      "options": {
+        "stop": "Stop: all departures from a stop",
+        "line": "Line: departure times of a line at each stop"
+      }
+    }
+  },
+  "services": {
+    "get_journeys": {
+      "name": "Get next journeys",
+      "description": "Next buses from a stop, optionally only those that reach a destination stop.",
+      "fields": {
+        "origin": {"name": "From", "description": "Stop name (all platforms) or stop_id."},
+        "destination": {"name": "To", "description": "Stop name or stop_id (optional)."},
+        "count": {"name": "Count", "description": "Number of journeys."},
+        "datetime": {"name": "From time", "description": "Search from this time (default: now)."},
+        "lines": {"name": "Lines", "description": "Comma separated line filter."}
+      }
+    },
+    "get_timetable": {
+      "name": "Get timetable",
+      "description": "Departures from a stop (whole day or a time window), or the departure times of a line at every stop.",
+      "fields": {
+        "mode": {"name": "Mode", "description": "stop or line."},
+        "stop": {"name": "Stop", "description": "Stop name or stop_id (stop mode)."},
+        "line": {"name": "Line", "description": "Line number, e.g. 15 (line mode)."},
+        "date": {"name": "Date", "description": "Default: today."},
+        "start": {"name": "From", "description": "Window start (default: 00:00)."},
+        "end": {"name": "To", "description": "Window end (default: end of day)."},
+        "direction": {"name": "Direction", "description": "Terminus stop name (line mode, optional)."},
+        "lines": {"name": "Lines", "description": "Comma separated line filter (stop mode)."}
+      }
+    },
+    "get_metadata": {
+      "name": "Get stops and lines",
+      "description": "List of stops, platforms and lines in the current timetable."
+    },
+    "refresh_feed": {
+      "name": "Refresh timetable",
+      "description": "Download the GTFS timetable now."
+    }
+  }
+}
