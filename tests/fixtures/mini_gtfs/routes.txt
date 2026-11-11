@@ -1,0 +1,3 @@
+route_id,agency_id,route_short_name,route_long_name,route_type,route_color,route_text_color
+R1,tuke,1,Alfa - Céza,3,2FB457,FFFFFF
+R2,tuke,2,Alfa - Delta,3,FF0000,FFFFFF

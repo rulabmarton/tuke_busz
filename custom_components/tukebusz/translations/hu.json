@@ -1,0 +1,92 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tüke Busz – útvonal",
+        "description": "Válaszd ki az indulási és (opcionálisan) a cél megállót. A megállónév az összes kocsiállást jelenti; egy konkrét kocsiálláshoz a \"Név – kocsiállás\" elemet válaszd.",
+        "data": {
+          "origin": "Honnan (indulási megálló)",
+          "destination": "Hová (cél megálló, opcionális)"
+        }
+      },
+      "settings": {
+        "title": "{route}",
+        "data": {
+          "count": "Megjelenített indulások száma",
+          "scan_interval": "Frissítési gyakoriság",
+          "lines": "Csak ezek a járatok (vesszővel elválasztva, opcionális)",
+          "gtfs_refresh_hours": "Új menetrend letöltése ennyi óránként"
+        }
+      }
+    },
+    "error": {
+      "same_stop": "A cél megálló nem lehet azonos az indulási megállóval."
+    },
+    "abort": {
+      "already_configured": "Ez az útvonal már be van állítva.",
+      "cannot_connect": "Nem sikerült letölteni a Tüke Busz GTFS menetrendet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "count": "Megjelenített indulások száma",
+          "scan_interval": "Frissítési gyakoriság",
+          "lines": "Csak ezek a járatok (vesszővel elválasztva, opcionális)",
+          "gtfs_refresh_hours": "Új menetrend letöltése ennyi óránként"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "feed": {
+        "name": "Menetrend letöltve"
+      }
+    }
+  },
+  "selector": {
+    "mode": {
+      "options": {
+        "stop": "Megálló: minden indulás egy megállóból",
+        "line": "Járat: egy vonal indulási ideje minden megállóban"
+      }
+    }
+  },
+  "services": {
+    "get_journeys": {
+      "name": "Következő járatok",
+      "description": "A következő buszok egy megállóból, opcionálisan csak azok, amelyek a cél megállóba is eljutnak.",
+      "fields": {
+        "origin": {"name": "Honnan", "description": "Megállónév (minden kocsiállás) vagy stop_id."},
+        "destination": {"name": "Hová", "description": "Megállónév vagy stop_id (opcionális)."},
+        "count": {"name": "Darab", "description": "Járatok száma."},
+        "datetime": {"name": "Időponttól", "description": "Keresés ettől az időponttól (alapértelmezés: most)."},
+        "lines": {"name": "Járatok", "description": "Vesszővel elválasztott járatszűrő."}
+      }
+    },
+    "get_timetable": {
+      "name": "Menetrend lekérdezése",
+      "description": "Indulások egy megállóból (egész nap vagy időintervallum), vagy egy járat indulási ideje minden megállóban.",
+      "fields": {
+        "mode": {"name": "Mód", "description": "stop (megálló) vagy line (járat)."},
+        "stop": {"name": "Megálló", "description": "Megállónév vagy stop_id (megálló mód)."},
+        "line": {"name": "Járat", "description": "Járatszám, pl. 15 (járat mód)."},
+        "date": {"name": "Dátum", "description": "Alapértelmezés: ma."},
+        "start": {"name": "Ettől", "description": "Intervallum kezdete (alapértelmezés: 00:00)."},
+        "end": {"name": "Eddig", "description": "Intervallum vége (alapértelmezés: nap vége)."},
+        "direction": {"name": "Irány", "description": "Végállomás neve (járat mód, opcionális)."},
+        "lines": {"name": "Járatok", "description": "Vesszővel elválasztott járatszűrő (megálló mód)."}
+      }
+    },
+    "get_metadata": {
+      "name": "Megállók és járatok",
+      "description": "Az aktuális menetrend megállói, kocsiállásai és járatai."
+    },
+    "refresh_feed": {
+      "name": "Menetrend frissítése",
+      "description": "A GTFS menetrend azonnali letöltése."
+    }
+  }
+}

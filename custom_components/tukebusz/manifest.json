@@ -1,0 +1,13 @@
+{
+  "domain": "tukebusz",
+  "name": "Tüke Busz (Pécs)",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": ["http", "frontend"],
+  "documentation": "https://github.com/your-github-user/ha-tukebusz",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/your-github-user/ha-tukebusz/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}
